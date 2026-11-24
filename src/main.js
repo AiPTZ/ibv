@@ -6,30 +6,43 @@ const progress = document.querySelector("[data-progress]");
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-window.addEventListener(
-  "scroll",
-  () => {
-    nav.classList.toggle("is-scrolled", window.scrollY > 12);
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
-    progress.style.transform = `scaleX(${ratio})`;
-  },
-  { passive: true }
-);
+if (nav && progress) {
+  window.addEventListener(
+    "scroll",
+    () => {
+      nav.classList.toggle("is-scrolled", window.scrollY > 12);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      progress.style.transform = `scaleX(${ratio})`;
+    },
+    { passive: true }
+  );
+}
 
-toggle.addEventListener("click", () => {
-  const open = menu.classList.toggle("is-open");
-  toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-  toggle.querySelector("span").textContent = open ? "×" : "+";
-});
-
-menu.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
+if (toggle && menu) {
+  const closeMenu = () => {
     menu.classList.remove("is-open");
     toggle.setAttribute("aria-label", "Abrir menu");
     toggle.querySelector("span").textContent = "+";
+  };
+
+  toggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("is-open");
+    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    toggle.querySelector("span").textContent = open ? "×" : "+";
   });
-});
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu.classList.contains("is-open")) {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+}
 
 document.querySelectorAll(".magnetic").forEach((el) => {
   if (!finePointer || reduce) return;
@@ -45,7 +58,7 @@ document.querySelectorAll(".magnetic").forEach((el) => {
 });
 
 const revealNodes = document.querySelectorAll(
-  ".method-card, .program, .ecosystem, .knowhow figure, .clients-logos, .contact-form-wrap"
+  ".method-card, .program, .ecosystem, .contact-form-wrap, .family-card, .tech-card, .result-card, .pain-item, .audience-item, .proposal-card, .sg-figure, .emphasis"
 );
 revealNodes.forEach((node, index) => {
   node.classList.add("reveal-on");
@@ -69,25 +82,37 @@ if (!reduce && "IntersectionObserver" in window) {
   revealNodes.forEach((node) => node.classList.add("is-in"));
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const error = form.querySelector("[data-error]");
-  const ok = form.querySelector("[data-ok]");
-  const data = new FormData(form);
-  const email = String(data.get("email") || "");
-  const filled = ["nome", "cargo", "empresa", "email", "telefone", "desafio"].every(
-    (key) => String(data.get(key) || "").trim()
-  );
-  const corporate = /.+@.+\..+/.test(email) && !/(gmail|hotmail|yahoo|outlook)\./i.test(email);
-
-  error.hidden = true;
-  ok.hidden = true;
-
-  if (!filled || !corporate) {
-    error.hidden = false;
-    return;
+const programSelect = document.querySelector("[data-programa]");
+if (programSelect) {
+  const wanted = new URLSearchParams(window.location.search).get("programa");
+  if (wanted) {
+    const option = Array.from(programSelect.options).find((item) => item.value === wanted);
+    if (option) programSelect.value = wanted;
   }
+}
 
-  ok.hidden = false;
-  form.reset();
-});
+if (form) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const error = form.querySelector("[data-error]");
+    const ok = form.querySelector("[data-ok]");
+    const data = new FormData(form);
+    const email = String(data.get("email") || "");
+    const required = ["nome", "empresa", "cargo", "email", "telefone", "desafio"];
+    if (form.querySelector("[data-programa]")) required.push("programa");
+
+    const filled = required.every((key) => String(data.get(key) || "").trim());
+    const corporate = /.+@.+\..+/.test(email) && !/(gmail|hotmail|yahoo|outlook)\./i.test(email);
+
+    error.hidden = true;
+    ok.hidden = true;
+
+    if (!filled || !corporate) {
+      error.hidden = false;
+      return;
+    }
+
+    ok.hidden = false;
+    form.reset();
+  });
+}

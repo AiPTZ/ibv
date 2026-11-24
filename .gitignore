@@ -120,9 +120,6 @@
 **/.cache/
 **/tmp/
 **/temp/
-.monkeycode-tmp-files/
-.agents/
-brand-assets/
 
 # Dart
 **/.dart_tool/

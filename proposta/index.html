@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Solicite uma proposta corporativa | IBV Corporate</title>
+    <meta
+      name="description"
+      content="Solicite uma proposta corporativa IBV. Diagnóstico do modelo comercial, maturidade do time e gap de performance antes de qualquer proposta."
+    />
+    <link rel="canonical" href="https://ibvcorporate.com.br/proposta/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+    <div class="reading-progress" data-progress aria-hidden="true"></div>
+
+    <header class="site-header" data-nav>
+      <div class="nav wrap">
+        <a class="brand" href="/" aria-label="IBV Corporate">
+          <img src="/brand/logo-light.png" alt="IBV Corporate" width="196" height="42" />
+        </a>
+        <nav data-desktop-nav aria-label="Principal">
+          <a href="/programas/">Programas</a>
+          <a href="/sala-de-guerra/">Sala de Guerra</a>
+          <a href="/tecnologia/personal-sales/">Tecnologia</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button button-primary nav-cta" href="/proposta/">Solicite uma proposta</a>
+          <button class="menu-toggle" type="button" aria-label="Abrir menu" data-menu-toggle>
+            Menu <span>+</span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu wrap" data-menu>
+        <a href="/programas/">Programas</a>
+        <a href="/sala-de-guerra/">Sala de Guerra</a>
+        <a href="/tecnologia/personal-sales/">Tecnologia</a>
+        <a class="button button-primary" href="/proposta/">Solicite uma proposta</a>
+      </div>
+    </header>
+
+    <main class="page-main" id="conteudo">
+      <section class="page-hero">
+        <div class="page-hero-grid" aria-hidden="true"></div>
+        <div class="wrap">
+          <nav class="crumbs" aria-label="Você está aqui">
+            <a href="/">Início</a>
+            <span aria-hidden="true">/</span>
+            <span>Proposta corporativa</span>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section-pad" style="padding-top: 0">
+        <div class="wrap proposal-layout">
+          <div class="proposal-side">
+            <p class="page-eyebrow">Proposta corporativa</p>
+            <h2>O próximo passo para a <em style="font-style: normal; color: #8a5df0">performance comercial.</em></h2>
+            <p>
+              Programa sob medida para a sua operação comercial. Sem pitch genérico: entendemos o
+              modelo comercial, a maturidade do time e o gap de performance antes de qualquer
+              proposta.
+            </p>
+            <ul class="proposal-steps">
+              <li>
+                <span class="step-n">1</span>
+                <span>Diagnóstico do modelo comercial e da maturidade do time.</span>
+              </li>
+              <li>
+                <span class="step-n">2</span>
+                <span>Desenho da trilha e seleção dos programas aderentes ao escopo.</span>
+              </li>
+              <li>
+                <span class="step-n">3</span>
+                <span>Proposta com formato, investimento e indicadores de acompanhamento.</span>
+              </li>
+            </ul>
+            <p class="note">
+              Metodologia IBV: repertório, aprendizagem social, experiências práticas, feedback e
+              aplicação no trabalho.
+            </p>
+          </div>
+
+          <div class="proposal-card">
+            <p class="form-title">Vamos conhecer a sua operação.</p>
+            <p class="form-sub">Retorno do time IBV em até 2 dias úteis.</p>
+            <form data-form novalidate>
+              <label>
+                Nome completo
+                <input type="text" name="nome" required autocomplete="name" />
+              </label>
+              <div class="form-row">
+                <label>
+                  Empresa
+                  <input type="text" name="empresa" required autocomplete="organization" />
+                </label>
+                <label>
+                  Cargo
+                  <input type="text" name="cargo" required autocomplete="organization-title" />
+                </label>
+              </div>
+              <label>
+                E-mail corporativo
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+              <label>
+                Telefone
+                <input type="tel" name="telefone" required autocomplete="tel" />
+              </label>
+              <label>
+                Programa de interesse
+                <select name="programa" data-programa required>
+                  <option value="">Selecione</option>
+                  <option value="sala-de-guerra">Sala de Guerra da Negociação</option>
+                  <option value="personal-sales">Personal Sales IA</option>
+                  <option value="consultiva">Família consultiva</option>
+                  <option value="comunicacao">Família comunicação</option>
+                  <option value="vendas">Excelência em vendas</option>
+                  <option value="comportamental">Inteligência comportamental</option>
+                  <option value="outro">Outro / não definido</option>
+                </select>
+              </label>
+              <label>
+                Desafio comercial
+                <textarea name="desafio" rows="4" required placeholder="Qual resultado a diretoria precisa acelerar?"></textarea>
+              </label>
+              <button class="button button-primary" type="submit">Enviar solicitação</button>
+              <p class="form-notice">
+                Ao enviar, você concorda em ser contatado pelo time IBV sobre esta solicitação.
+              </p>
+              <p class="form-error" data-error hidden>Preencha todos os campos com um e-mail corporativo válido.</p>
+              <p class="form-ok" data-ok hidden>Solicitação recebida. Em breve um consultor IBV entra em contato.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="IBV Corporate">
+            <img src="/brand/logo-light.png" alt="IBV Corporate" width="160" height="34" />
+          </a>
+          <p>
+            Desenvolvemos pessoas, líderes e organizações para transformar competências em
+            comportamentos e comportamentos em resultados.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Programas</h4>
+          <ul>
+            <li><a href="/programas/#consultiva">Família consultiva</a></li>
+            <li><a href="/programas/#comunicacao">Família comunicação</a></li>
+            <li><a href="/programas/#vendas">Excelência em vendas</a></li>
+            <li><a href="/programas/#comportamental">Inteligência comportamental</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Destaques</h4>
+          <ul>
+            <li><a href="/sala-de-guerra/">Sala de Guerra da Negociação</a></li>
+            <li><a href="/tecnologia/personal-sales/">Personal Sales IA</a></li>
+            <li><a href="/proposta/">Solicite uma proposta</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <span>© IBV Corporate. Todos os direitos reservados.</span>
+        <span>Metodologia IBV · Programas consultivos e tecnologia</span>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
